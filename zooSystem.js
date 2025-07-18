@@ -20,18 +20,50 @@ class Animal {
   }
 
   makeSound() {
-    console.log(`${this.#name} makes a generic sound`);
+    console.log(`${this.#name} makes a generic sound.`);
   }
 }
 
+// Inheritance
 class Dog extends Animal {
   constructor(name, age) {
     super(name, age);
     this.breed = "Labrador";
   }
-  // Logs barking sound
+
+  // Dog Methods
+
   makeSound() {
-    console.log(`${this.getInfo().split(" is")[0]} barks: Woof!`);
+    console.log(`${this.getInfo().split(" is")[0]} barks: Woof!`); // Logs barking sound-Polymorphism in action
+  }
+}
+
+// Using inheritance- Add Cat subclass
+class Cat extends Animal {
+  constructor(name, age) {
+    super(name, age);
+  }
+
+  // Cat Methods
+  makeSound() {
+    console.log(`${this.getInfo().split(" is")[0]} meows: Meow!`); // Logs meowing sound-Polymorphism in action
+  }
+}
+
+// Using inheritance- Add Bird subclass
+class Bird extends Animal {
+  constructor(name, age) {
+    super(name, age);
+  }
+
+  // Bird Methods
+  makeSound() {
+    console.log(
+      `${this.getInfo().split(" is")[0]} chirps: Chirp, Chirp, Tweet, Tweet!` // Logs chirping sound-Polymorphism in action
+    );
+  }
+  fly() {
+    console.log(`${this.getInfo().split(" is")[0]} is flying!`); // added new fly method
   }
 }
 
@@ -40,9 +72,22 @@ class Dog extends Animal {
 const tiger = new Animal("Tiger", 5);
 tiger.eat();
 console.log(tiger.getInfo());
+tiger.makeSound();
 
 // Test New Extended Dog Class
 const Buddy = new Dog("Buddy", 4);
 Buddy.makeSound();
 Buddy.eat();
 console.log(Buddy.getInfo());
+
+// Test Cat Class
+const Meowers = new Cat("Meowers", 2);
+Meowers.makeSound();
+console.log(Meowers.getInfo());
+
+// Test Bird Class
+const Tweety = new Bird("Tweety", 4);
+Tweety.makeSound();
+console.log(Tweety.getInfo());
+Tweety.fly();
+Tweety.eat();
